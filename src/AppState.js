@@ -14,4 +14,4 @@ class AppState {
   }
 }
 
-export default AppState;
+export default new AppState();
