@@ -1,14 +1,17 @@
 import React, {Component} from 'react';
-import AppState from '../../AppState.js';
+import AppState from '../../state';
 import { observer } from 'mobx-react';
 
 @observer
 class CategoryPage extends Component {
+    componentDidMount() {
+        AppState.fetchCategories();
+    }
+    
     render() {
-    return (
+        return (
             <div>
             <h3>{ this.props.params.category }</h3>
-            { AppState.timer }
             </div>
         );
     }
