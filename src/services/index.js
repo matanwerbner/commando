@@ -7,6 +7,14 @@ import Api from './Api';
         return Fixtures.getCategories();
     }
 
+    getCommands(category) {
+        return Fixtures.getCommands(category);
+    }
+
+    getOptions(command) {
+        return Fixtures.getOptions(command);
+    }
+
 };
 
 export default new dal();

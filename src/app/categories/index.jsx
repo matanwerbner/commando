@@ -26,7 +26,7 @@ class CategoriesPage extends Component {
             <div className="categoriesPageContainer">
             <h3>All Categories Page</h3>
             { 
-                AppState.categories && 
+                AppState.categories.length > 0  && 
                 <CategoryList 
                     onClicked={ this._onCategoryClicked }
                     categories={ AppState.categories } />  }

@@ -1,0 +1,14 @@
+[
+    {
+        "name": "add",
+        "title": "ADD"
+    },
+    {
+        "name": "init",
+        "title": "INIT"
+    },
+    {
+        "name": "upgrade",
+        "title": "UPGRADE"
+    }
+]

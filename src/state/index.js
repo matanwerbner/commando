@@ -1,9 +1,9 @@
 import { observable } from 'mobx';
 import DAL from '../services';
 class AppState {
-  @observable categories = null;
-  @observable commands = null;
-  @observable options = null;
+  @observable categories = [];
+  @observable commands = [];
+  @observable options = [];
 
 
   constructor() {
@@ -15,6 +15,16 @@ class AppState {
   fetchCategories() {
       this.categories = DAL.getCategories();
   }
+
+  fetchCommands(category) {
+    this.commands = DAL.getCommands(category);
+  }
+
+  fetchOptions(command) {
+    this.options = DAL.getOptions(command);
+  }
 }
 
-export default new AppState();
+const state = new AppState();
+
+module.exports = state;
