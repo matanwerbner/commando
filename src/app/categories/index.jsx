@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import AppState from '../../state';
-import { observer } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 import CategoryList from './categoryList';
 import './categoriesPage.scss';
-import { browserHistory } from 'react-router'
 
+@inject('routing', 'categories')
 @observer
 class CategoriesPage extends Component {
 
@@ -14,22 +13,24 @@ class CategoriesPage extends Component {
     }
 
     _onCategoryClicked(category) {
-        browserHistory.push(`/${category.name}`);
+        this.props.routing.push(`/${category.name}`);
     }
 
     componentDidMount() {
-        AppState.fetchCategories();
+        this.props.categories.fetchCategories();
     }
     
     render() {
+        const { categories } = this.props;
+        
         return (
             <div className="categoriesPageContainer">
             <h3>All Categories Page</h3>
             { 
-                AppState.categories.length > 0  && 
+                categories.values.length > 0  && 
                 <CategoryList 
                     onClicked={ this._onCategoryClicked }
-                    categories={ AppState.categories } />  }
+                    categories={ categories.values } />  }
             </div>
         );
     }

@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-const AppState = require('../../state');
-import { observer } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 import OptionsList from './optionsList';
 import { browserHistory } from 'react-router'
+import CommandLine from './commandLine';
 
+@inject('routing', 'options', 'commandLine')
 @observer
 class CommandPage extends Component {
      constructor(props) {
@@ -11,17 +12,20 @@ class CommandPage extends Component {
     }
 
     componentDidMount() {
-        AppState.fetchOptions(this.props.params.command);
+        this.props.options.fetchOptions(this.props.params.command);
     }
     
     render() {
+        const { options, commandLine } = this.props;
         return (
             <div className="optionsPageContainer">
             <h3>{ this.props.params.command } Command Page</h3>
             { 
-                AppState.options.length > 0 && 
+                options.values.length > 0 && 
                 <OptionsList 
-                    options={ AppState.options } />  }
+                    options={ options.values } />  
+            }
+            <CommandLine command={ commandLine } />
             </div>
         );
     }

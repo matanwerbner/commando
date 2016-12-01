@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-const AppState = require('../../state');
-import { observer } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 import CommandsList from './commandsList';
 import { browserHistory } from 'react-router'
 
+@inject('routing', 'commands')
 @observer
 class CategoryPage extends Component {
      constructor(props) {
@@ -12,23 +12,23 @@ class CategoryPage extends Component {
     }
 
     _onCommandClicked(command) {
-        debugger;
-        browserHistory.push(`/${this.props.params.category}/${command.name}`);
+        this.props.routing.push(`/${this.props.params.category}/${command.name}`);
     }
 
     componentDidMount() {
-        AppState.fetchCommands(this.props.params.category);
+        this.props.commands.fetchCommands(this.props.params.category);
     }
     
     render() {
+        const { commands } = this.props;
         return (
             <div className="categoriesPageContainer">
             <h3>{ this.props.params.category } Commands Page</h3>
             { 
-                AppState.commands.length > 0 && 
+                commands.values.length > 0 && 
                 <CommandsList 
                     onClicked={ this._onCommandClicked }
-                    commands={ AppState.commands } />  }
+                    commands={ commands.values } />  }
             </div>
         );
     }
