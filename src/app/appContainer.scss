@@ -1,0 +1,27 @@
+html, body {
+    padding: 0;
+    margin: 0;
+
+    .appContainer {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+
+        h1 {
+            height: 50px;
+            padding: 5px;
+            margin: 0;
+        }
+
+        .appBody {
+            display: flex;
+            padding: 5px;
+            flex: 1;
+
+            > div {
+                flex: 1;
+            }
+        }
+    }
+}

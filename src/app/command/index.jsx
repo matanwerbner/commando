@@ -3,6 +3,7 @@ import { observer, inject } from 'mobx-react';
 import OptionsList from './optionsList';
 import { browserHistory } from 'react-router'
 import CommandLine from './commandLine';
+import './commandPage.scss';
 
 @inject('routing', 'options', 'commandLine')
 @observer
@@ -18,14 +19,18 @@ class CommandPage extends Component {
     render() {
         const { options, commandLine } = this.props;
         return (
-            <div className="optionsPageContainer">
-            <h3>{ this.props.params.command } Command Page</h3>
-            { 
+            <div className="commandPageContainer">
+           <div className="optionsListContainer">
+             { 
                 options.values.length > 0 && 
                 <OptionsList 
                     options={ options.values } />  
             }
-            <CommandLine command={ commandLine } />
+            </div>
+            <div className="commandLineContainer">
+             <CommandLine command={ this.props.params.command } />
+            </div>
+           
             </div>
         );
     }

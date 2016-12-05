@@ -1,0 +1,15 @@
+.commandLineInner {
+    bottom: 0;
+    padding: 20px;
+    margin: 20px;
+    background: black;
+
+    border-radius: 10px;
+    > div {
+        color: #fff;
+
+        &:before {
+            content: '> '
+        }
+    }
+}

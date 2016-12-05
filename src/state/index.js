@@ -29,7 +29,8 @@ class AppState {
     };
 
     @computed get commandLine() {
-        return 'sdfsdf';
+        
+        return '';
     }
 }
 

@@ -1,0 +1,9 @@
+.commandPageContainer {
+    display: flex;
+    flex-direction: column;
+    .optionsListContainer {
+        flex: 1;
+    }
+    .commandLineContainer {
+    }
+}
