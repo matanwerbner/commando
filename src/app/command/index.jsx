@@ -25,12 +25,10 @@ class CommandPage extends Component {
                 options.values.length > 0 && 
                 <OptionsList 
                     options={ options.values } />  
-            }
-            </div>
+            }</div>
             <div className="commandLineContainer">
              <CommandLine command={ this.props.params.command } />
             </div>
-           
             </div>
         );
     }
