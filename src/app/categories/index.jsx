@@ -3,7 +3,7 @@ import { observer, inject } from 'mobx-react';
 import CategoryList from './categoryList';
 import './categoriesPage.scss';
 
-@inject('routing', 'categories')
+@inject('AppState', 'Routing')
 @observer
 class CategoriesPage extends Component {
 
@@ -13,24 +13,24 @@ class CategoriesPage extends Component {
     }
 
     _onCategoryClicked(category) {
-        this.props.routing.push(`/${category.name}`);
+        this.props.Routing.push(`/${category.name}`);
     }
 
     componentDidMount() {
-        this.props.categories.fetchCategories();
+        this.props.AppState.fetchCategories();
     }
     
     render() {
-        const { categories } = this.props;
+        const { categories } = this.props.AppState;
         
         return (
             <div className="categoriesPageContainer">
             <h3>All Categories Page</h3>
             { 
-                categories.values.length > 0  && 
+                categories && 
                 <CategoryList 
                     onClicked={ this._onCategoryClicked }
-                    categories={ categories.values } />  }
+                    categories={ categories } />  }
             </div>
         );
     }

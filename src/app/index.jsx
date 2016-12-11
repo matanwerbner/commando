@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DevTools from 'mobx-react-devtools';
 import './appContainer.scss';
+import { observer, inject } from 'mobx-react';
 
 class App extends Component {
   render() {
