@@ -6,9 +6,8 @@ render(
   Routes,
   document.getElementById('root')
 );
-
 if (module.hot) {
-  module.hot.accept('./app', () => {
+  module.hot.accept(() => {
     render(
       Routes,
       document.getElementById('root')

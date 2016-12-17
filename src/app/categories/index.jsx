@@ -15,18 +15,13 @@ class CategoriesPage extends Component {
     _onCategoryClicked(category) {
         this.props.Routing.push(`/${category.name}`);
     }
-
-    componentDidMount() {
-        this.props.AppState.fetchCategories();
-    }
     
     render() {
         const { categories } = this.props.AppState;
         
         return (
             <div className="categoriesPageContainer">
-            <h3>All Categories Page</h3>
-            { 
+             { 
                 categories && 
                 <CategoryList 
                     onClicked={ this._onCategoryClicked }

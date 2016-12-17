@@ -1,18 +1,27 @@
 .categoryListContainer {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex: 1;
     justify-content: space-around;
+    border-bottom: 1px solid green;
+    width: 200px;
+    flex: 1;
+    background: #39c;
 
     >div {
-        background: #39c;
-        color: #fff;
-        padding: 20px;
-        width: 200px;
+        color: #000;
+        height: 60px;
+        padding: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 10px;
+        border: 1px solid green;
+        border-width: 1px 1px 0px 1px;
         cursor: pointer;
+        flex: 0;
+        &:hover {
+            background: #666;
+            color: #fff;
+        }
     }
 }
